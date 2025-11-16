@@ -19,8 +19,8 @@ echo "[i] Patching binaries..."
 echo "[i] Codesigning patched application..."
 
 codesign -f -s - "$APP_PATH_PATCHED"/Frameworks/*
-# codesign -f -s - "$APP_PATH_PATCHED"/PlugIns/*
-# codesign -f -s - "$APP_PATH_PATCHED"/Extensions/*
+codesign -f -s - "$APP_PATH_PATCHED"/PlugIns/*
+codesign -f -s - "$APP_PATH_PATCHED"/Extensions/*
 codesign -f -s - "$APP_PATH_PATCHED"
 
 echo "[i] Installing application to Simulator..."
