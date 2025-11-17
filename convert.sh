@@ -23,8 +23,11 @@ codesign -f -s - "$APP_PATH_PATCHED"/PlugIns/*
 codesign -f -s - "$APP_PATH_PATCHED"/Extensions/*
 codesign -f -s - "$APP_PATH_PATCHED"
 
-echo "[i] Installing application to Simulator..."
+BOOTED_UDID=$(xcrun simctl list devices --json | jq -r '.devices[][] | select(.state=="Booted") | .udid' | head -n 1)
+if [ -n "$BOOTED_UDID" ]; then
+  echo "[i] Installing application to Simulator..."
+  xcrun simctl install "$BOOTED_UDID" "$APP_PATH_PATCHED"
+fi
 
-xcrun simctl install "07A3BAF5-0D79-47EF-AB8E-3B7C97091CAA" "$APP_PATH_PATCHED"
 
 echo "[i] Done."

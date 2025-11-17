@@ -128,7 +128,7 @@ static void patch_file_at_path(NSString *path) {
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         if (argc < 2) {
-            NSLog(@"Usage: simufy <path-to-app>");
+            NSLog(@"Usage: simufy <path-to-app or binary>");
             return 1;
         }
 
